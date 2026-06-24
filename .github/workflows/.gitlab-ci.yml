@@ -1,7 +1,16 @@
-stages:
-  - build
+name: Pipeline básico
 
-build-job:
-  stage: build
-  script:
-    - echo "Hola desde GitLab CI"
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Descargar repositorio
+      uses: actions/checkout@v3
+
+    - name: Ejecutar comando
+      run: echo "Hola desde GitHub Actions"
